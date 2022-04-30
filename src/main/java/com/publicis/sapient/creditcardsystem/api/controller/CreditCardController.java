@@ -41,10 +41,10 @@ public class CreditCardController {
      * @return proper message for submission/failure
      */
     @PostMapping(value = "/credit-card", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<?> registerNewCreditCard(@RequestBody CreditCardBean creditCardRequestObj){
+    public ResponseEntity<?> registerCreditCard(@RequestBody CreditCardBean creditCardRequestObj){
 
         try{
-            return new ResponseEntity(creditCardService.registerNewCreditCard(creditCardRequestObj), HttpStatus.OK);
+            return new ResponseEntity(creditCardService.registerCreditCard(creditCardRequestObj), HttpStatus.OK);
         }catch (NumberFormatException ex){
             LOGGER.error(ApplicationConstant.CARD_NUMBER_NOT_NUMERIC, creditCardRequestObj.getCardNumber());
             return new ResponseEntity<>(ApplicationConstant.CARD_NUMBER_NOT_NUMERIC, HttpStatus.BAD_REQUEST);

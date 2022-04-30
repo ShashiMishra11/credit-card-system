@@ -40,7 +40,7 @@ public class CreditCardServiceImpl implements CreditCardService {
      * @throws InvalidDataException
      */
     @Override
-    public String registerNewCreditCard(CreditCardBean creditCardRequestObj) throws InvalidDataException{
+    public String registerCreditCard(CreditCardBean creditCardRequestObj) throws InvalidDataException{
 
         if(creditCardRequestObj.getCardNumber().length() > ApplicationConstant.ALLOWED_CHARACTERS_FOR_CREDIT_CARD)
             return ApplicationConstant.ERROR_CARD_NUMBER_MAX_LENGTH;

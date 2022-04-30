@@ -29,21 +29,21 @@ public class CreditCardServiceTest {
     @Test
     public void testAddCreditCard() throws Exception{
         Assert.assertNotNull(mockCreditCardServiceImpl.
-                registerNewCreditCard(new CreditCardBean("Test Card","4417123456789113",800l,
+                registerCreditCard(new CreditCardBean("Test Card","4417123456789113",800l,
                         ApplicationConstant.DEFAULT_CREDIT_CARD_BALANCE)));
     }
 
     @Test
     public void testMoreThanAllowedCharacter() throws Exception{
         Assert.assertEquals(ApplicationConstant.ERROR_CARD_NUMBER_MAX_LENGTH, mockCreditCardServiceImpl.
-                registerNewCreditCard(new CreditCardBean("Test Card","441712345678911345677899",800l,
+                registerCreditCard(new CreditCardBean("Test Card","441712345678911345677899",800l,
                         ApplicationConstant.DEFAULT_CREDIT_CARD_BALANCE)));
     }
 
     @Test(expected = InvalidDataException.class)
     public void testInvalidCardNumber() throws InvalidDataException {
         Assert.assertEquals(ApplicationConstant.INVALID_CARD_NUMBER, mockCreditCardServiceImpl.
-                registerNewCreditCard(new CreditCardBean("Test Card","4417123456",800l,
+                registerCreditCard(new CreditCardBean("Test Card","4417123456",800l,
                         ApplicationConstant.DEFAULT_CREDIT_CARD_BALANCE)));
     }
 

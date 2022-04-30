@@ -26,30 +26,30 @@ public class CreditCardControllerTest {
     @Test
     public void testAddCreditCard(){
         Assert.assertNotNull(mockCreditCardController.
-                registerNewCreditCard(new CreditCardBean("Test Card","4417123456789113",800l,
+                registerCreditCard(new CreditCardBean("Test Card","4417123456789113",800l,
                         ApplicationConstant.DEFAULT_CREDIT_CARD_BALANCE)));
     }
 
     @Test
     public void testInvalidCardNumber() throws Exception{
-        when(mockCreditCardService.registerNewCreditCard(new CreditCardBean("Test Card","44171234567Rsfdjhj",800l,
+        when(mockCreditCardService.registerCreditCard(new CreditCardBean("Test Card","44171234567Rsfdjhj",800l,
                 ApplicationConstant.DEFAULT_CREDIT_CARD_BALANCE))).thenThrow(NumberFormatException.class);
         Assert.assertNotNull(mockCreditCardController.
-                registerNewCreditCard(new CreditCardBean("Test Card","44171234567Rsfdjhj",800l,
+                registerCreditCard(new CreditCardBean("Test Card","44171234567Rsfdjhj",800l,
                         ApplicationConstant.DEFAULT_CREDIT_CARD_BALANCE)));
     }
 
     @Test
     public void testAddCardThrowNumberFormatException() throws InvalidDataException {
-        when(mockCreditCardService.registerNewCreditCard(new CreditCardBean("Test Card","44171234567Rsfdjhj",800l,
+        when(mockCreditCardService.registerCreditCard(new CreditCardBean("Test Card","44171234567Rsfdjhj",800l,
                 ApplicationConstant.DEFAULT_CREDIT_CARD_BALANCE))).thenThrow(NumberFormatException.class);
-        Assert.assertNotNull(mockCreditCardController.registerNewCreditCard(new CreditCardBean("Test Card","44171234567Rsfdjhj",800l,
+        Assert.assertNotNull(mockCreditCardController.registerCreditCard(new CreditCardBean("Test Card","44171234567Rsfdjhj",800l,
                 ApplicationConstant.DEFAULT_CREDIT_CARD_BALANCE)));
     }
 
     @Test
     public void testAddCardThrowInvalidDataException() {
-        Assert.assertNotNull(mockCreditCardController.registerNewCreditCard(new CreditCardBean("Test Card","44171234567",800l,
+        Assert.assertNotNull(mockCreditCardController.registerCreditCard(new CreditCardBean("Test Card","44171234567",800l,
                 ApplicationConstant.DEFAULT_CREDIT_CARD_BALANCE)));
     }
 
