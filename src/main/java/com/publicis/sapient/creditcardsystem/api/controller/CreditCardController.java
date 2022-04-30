@@ -25,7 +25,6 @@ import com.publicis.sapient.creditcardsystem.service.CreditCardService;
 @CrossOrigin
 @RestController
 @Validated
-@RequestMapping("/credit-card")
 public class CreditCardController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CreditCardController.class);
@@ -41,11 +40,11 @@ public class CreditCardController {
      * @param creditCardRequestObj
      * @return proper message for submission/failure
      */
-    @PostMapping(value = "/add", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<?> addCreditCard(@RequestBody CreditCardBean creditCardRequestObj){
+    @PostMapping(value = "/credit-card", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<?> registerNewCreditCard(@RequestBody CreditCardBean creditCardRequestObj){
 
         try{
-            return new ResponseEntity(creditCardService.addCreditCard(creditCardRequestObj), HttpStatus.OK);
+            return new ResponseEntity(creditCardService.registerNewCreditCard(creditCardRequestObj), HttpStatus.OK);
         }catch (NumberFormatException ex){
             LOGGER.error(ApplicationConstant.CARD_NUMBER_NOT_NUMERIC, creditCardRequestObj.getCardNumber());
             return new ResponseEntity<>(ApplicationConstant.CARD_NUMBER_NOT_NUMERIC, HttpStatus.BAD_REQUEST);
@@ -65,10 +64,10 @@ public class CreditCardController {
      * no argument
      * @return list of creditCards
      */
-    @GetMapping(value="/all-cards", produces = "application/json")
-    public ResponseEntity<?> getAllCreditCard(){
+    @GetMapping(value="/credit-card/all-cards", produces = "application/json")
+    public ResponseEntity<?> retrieveCreditCard(){
         try{
-            return new ResponseEntity(creditCardService.getAllCreditCard(), HttpStatus.OK);
+            return new ResponseEntity(creditCardService.retrieveCreditCard(), HttpStatus.OK);
         }catch (Exception ex){
             LOGGER.error(ApplicationConstant.ERROR_OCCURRED_FOR_GET_ALL_CREDIT_CARD, ex.getMessage());
             return new ResponseEntity<>(ApplicationConstant.ERROR_OCCURRED_FOR_GET_ALL_CREDIT_CARD, HttpStatus.INTERNAL_SERVER_ERROR);

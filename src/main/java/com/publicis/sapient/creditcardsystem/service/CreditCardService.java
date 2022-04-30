@@ -6,7 +6,7 @@ import com.sun.media.sound.InvalidDataException;
 import java.util.List;
 
 public interface CreditCardService {
-    String addCreditCard(CreditCardBean creditCardRequestObj) throws InvalidDataException;
+    String registerNewCreditCard(CreditCardBean creditCardRequestObj) throws InvalidDataException;
 
-    List<CreditCardBean> getAllCreditCard();
+    List<CreditCardBean> retrieveCreditCard();
 }
